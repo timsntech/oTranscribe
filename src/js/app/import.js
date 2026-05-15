@@ -38,6 +38,10 @@ function remindOfMediaFile( filename, filesource, filetime ){
 function reactToInput(){
     let input = this;
     var file = input.files[0];
+
+    if (!file) {
+        return;
+    }
     
     var reader = new FileReader();
     reader.readAsText(file);
