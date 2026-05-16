@@ -22,7 +22,138 @@ body {
     font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
     height: 100%;
     background: $grey;
+    color: $ink;
+    letter-spacing: 0;
+    text-rendering: geometricPrecision;
 }
+
+html {
+    background: $grey;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    letter-spacing: 0;
+}
+
+a {
+    color: $accent;
+}
+
 #extra-ui-text {
     display: none;
+}
+
+body.theme-dark {
+    background: #111827;
+    color: #e5e7eb;
+
+    a {
+        color: #5eead4;
+    }
+
+    .topbar {
+        background: rgba(17, 24, 39, 0.96);
+        color: #e5e7eb;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 14px 38px rgba(0, 0, 0, 0.28);
+    }
+
+    .title,
+    .help-title,
+    .language-title,
+    .settings-button,
+    .theme-toggle {
+        color: #d1d5db;
+        &:hover {
+            background: #1f2937;
+            color: #ffffff;
+        }
+        &.active {
+            background: #134e4a;
+            color: #ccfbf1;
+        }
+    }
+
+    .about,
+    .textbox-container {
+        background: #111827;
+    }
+
+    .about h1 {
+        color: #f9fafb;
+    }
+
+    .about p.lead,
+    .about .press,
+    #lastfile,
+    #formats {
+        color: #9ca3af;
+    }
+
+    .about li,
+    .text-panel,
+    #textbox,
+    .export-panel,
+    .ext-input-field,
+    .alt-input-button {
+        background: #182231;
+        border-color: #2c3848;
+        color: #e5e7eb;
+        box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+    }
+
+    .about li strong,
+    #lastfile .media-reload {
+        color: #5eead4;
+    }
+
+    .about .press img {
+        opacity: 0.9;
+        filter: grayscale(1) invert(1);
+    }
+
+    #textbox .timestamp,
+    .text-panel .sbutton i.active,
+    .export-panel .export-block-md:hover,
+    .export-panel .export-block-txt:hover {
+        background: #134e4a;
+        color: #ccfbf1;
+    }
+
+    .text-panel .sbutton,
+    .text-panel .sbutton i,
+    .text-panel .wordcount .wc-text,
+    .text-panel .wordcount .wc-text .word-count-number,
+    .export-panel .export-title,
+    .export-panel .export-block-md,
+    .export-panel .export-block-txt,
+    .export-panel .export-block-gd {
+        color: #d1d5db;
+    }
+
+    .text-panel .sbutton i,
+    .controls .button,
+    .progressor,
+    .export-panel .export-block-md,
+    .export-panel .export-block-txt,
+    .export-panel .export-block-gd,
+    .ext-input-field input {
+        background: #111827;
+        border-color: #2c3848;
+    }
+
+    .controls .button:hover,
+    .text-panel .sbutton i:hover,
+    .alt-input-button:hover {
+        color: #5eead4;
+        border-color: #2dd4bf;
+    }
+
+    .progressor-progress {
+        background: #0f766e;
+    }
 }

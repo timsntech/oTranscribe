@@ -1,17 +1,26 @@
 @use "sass:color";
 
-$accent: rgb(52, 130, 177);
-$dark: hsl(0, 0%, 15%);
-$grey: #f1f1f1;
-$accentLight: color.adjust($accent, $lightness: 10%);
-$accentGradient: linear-gradient( 0deg, color.adjust($accent, $lightness: 0%) 5%, color.adjust($accent, $lightness: 10%) 100% );
+$accent: #0f766e;
+$accentWarm: #f59e0b;
+$dark: #17202a;
+$ink: #1f2937;
+$muted: #6b7280;
+$line: #d9e0e7;
+$panel: #ffffff;
+$grey: #eef2f5;
+$surface: #f8fafc;
+$accentLight: color.adjust($accent, $lightness: 8%);
+$accentSoft: #d7f0ec;
+$shadow: 0 18px 50px rgba(23, 32, 42, 0.14);
+$softShadow: 0 10px 30px rgba(23, 32, 42, 0.08);
 
 @mixin button {
     color: white;
     text-align: center;
     background-color: $accent;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    box-shadow: 0 8px 20px rgba(15, 118, 110, 0.22);
     &:hover, &.hover {
         background: $accentLight;
     }
@@ -28,11 +37,12 @@ $accentGradient: linear-gradient( 0deg, color.adjust($accent, $lightness: 0%) 5%
 
 @mixin page {
     @include noselect(text);
-    color: $dark;
+    color: $ink;
     background: $grey;
     z-index: 200;
     position: relative;
-    padding: 40px 0;
+    min-height: calc(100vh - 56px);
+    padding: 0;
     margin-bottom: -100%;
     display: none;
     &.active {

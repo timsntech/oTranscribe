@@ -13,16 +13,18 @@
 }
 
 .input.active {
-    max-height: 300px;
-    margin: 25px auto;
+    max-height: 320px;
+    margin: 28px auto 0 auto;
     opacity: 1;
 }
 
 #lastfile, #formats {
-    color: #BBB;
+    color: $muted;
     font-size: 12px;
-    margin: 0 auto 4px auto;
-    width: 20%;
+    line-height: 18px;
+    margin: 0 auto 6px auto;
+    width: min(620px, calc(100% - 48px));
+    text-align: center;
     a {
         color: inherit; 
     }
@@ -44,12 +46,13 @@
 
 .file-input-wrapper {
     @include button;
-    width: 200px;
-    padding: 15px;
+    width: min(420px, calc(100% - 48px));
+    padding: 22px;
     overflow: hidden;
     position: relative;
-    margin: 20px auto 5px auto;
+    margin: 0 auto 10px auto;
     border: 0;
+    box-sizing: border-box;
 
     text-indent:0;    
     
@@ -58,16 +61,16 @@
 }
 
 .btn-file-input i {
-    font-size: 40px;
+    font-size: 28px;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 
 
 .file-input-wrapper > .btn-file-input {
   display: inline-block;
-  width: 200px;
+  width: 100%;
 }
 
 .btn-file-input {
@@ -85,8 +88,9 @@
     	text-align:center;
     	text-shadow:1px 1px 0px #2b6e8f;
         color:#ffffff;
-        font-family:arial;
-        font-size:15px;
+        font-family: inherit;
+        font-size:16px;
+        font-weight: 750;
         font-style:normal;
         
         &::-moz-focus-inner {
@@ -96,30 +100,41 @@
 }
 
 .alt-input-button {
-    @include button;
     margin: 0 auto 20px auto;
-    padding: 10px;
+    padding: 11px 14px;
     font-size: 14px;
     display: block;
-    border: 0;
-    width: 230px;    
+    border: 1px solid $line;
+    border-radius: 8px;
+    width: min(250px, calc(100% - 48px));
+    background: $panel;
+    color: $ink;
+    cursor: pointer;
+    box-shadow: $softShadow;
+    &:hover {
+        border-color: $accent;
+        color: $accent;
+    }
 }
 
 .ext-input-field {
-    width: 30%;
+    width: min(480px, calc(100% - 48px));
     margin: 0 auto;  
-    background: $dark;
-    border-radius: 3px;
-    padding: 8px;
+    background: $panel;
+    border: 1px solid $line;
+    border-radius: 8px;
+    padding: 16px;
     margin-bottom: 20px;
     display: none;
     position: absolute;
-    top: 60px;
-    left: 35%;
-    box-shadow: 0 0 5px grey;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: $shadow;
     text-align: center;
+    z-index: 70;
     label {
-        color: white;
+        color: $ink;
         font-size: 14px;
     }
     input {
@@ -129,12 +144,14 @@
         display: block;
         font-size: 14px;
         font-family: inherit;
-        padding: 3px;
+        padding: 10px;
+        border: 1px solid $line;
+        border-radius: 6px;
         margin-top: 8px;
     }
     .close-ext-input {
         float: right;
-        color: white;
+        color: $muted;
         cursor: pointer;
         opacity: 0.5;
         &:hover {
@@ -142,7 +159,7 @@
         };
     }
     .ext-input-warning {
-        color: white;
+        color: #b91c1c;
         text-align: left;
         font-size: 12px;
         padding-top: 5px;

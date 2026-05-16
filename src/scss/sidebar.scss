@@ -1,7 +1,8 @@
+@use "sass:color";
 @use "variables" as *;
 @mixin sidebar-block {
-    padding: 5px 0;
-    color: $dark;
+    padding: 6px 0;
+    color: $ink;
 }
 
 @mixin transition {
@@ -13,13 +14,18 @@
 .text-panel {
     
     position: fixed;
-    top: 100px;
-    left: calc( 50% + 350px);
-    width: 200px;
-    padding-left: 20px;
+    top: 142px;
+    left: calc(50% + 430px);
+    width: 190px;
+    padding: 14px;
     text-align: left;
-    
-    padding-top: 200px;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(217, 224, 231, 0.95);
+    border-radius: 8px;
+    box-shadow: $softShadow;
+    backdrop-filter: blur(12px);
+    box-sizing: border-box;
+    padding-top: 14px;
     -webkit-transition: padding 1s;
     transition: padding 1s;
         
@@ -31,11 +37,14 @@
         
         // reset button style
         display: block;
-        background: inherit;
+        background: transparent;
         border: none;
         padding: 0;
-        margin: 0;
+        margin: 0 0 6px 0;
         outline: none;
+        color: $ink;
+        width: 100%;
+        text-align: left;
 
         @include sidebar-block;
         
@@ -54,18 +63,20 @@
         }
 
         i {
-            font-size: 20px;
+            font-size: 16px;
             min-width: 20px;
             text-align: center;
             display: inline-block;
             vertical-align: middle;
 
-            padding: 3px;
-            border: 1px solid #CCC;
-            border-radius: 2px;
+            padding: 8px;
+            border: 1px solid $line;
+            border-radius: 8px;
+            background: $panel;
             
             &:hover {
-              border-color: #AAA;
+              border-color: $accent;
+              color: $accent;
               cursor: pointer;   
             }
             
@@ -75,15 +86,18 @@
             
             &.active {
                 color: $accent;
+                background: $accentSoft;
+                border-color: color.adjust($accentSoft, $lightness: -12%);
             }
         }
         
         .label {
             text-transform: uppercase;
-            font-size: 10px;
-            padding: 0 5px;
+            font-size: 11px;
+            padding: 0 6px;
             display: inline-block;
-            opacity: 0;
+            opacity: 0.72;
+            color: $muted;
             @include transition;
         }
     }
@@ -91,28 +105,31 @@
     .wordcount {
         @include noselect(text);
         @include sidebar-block;
-        font-size: 16px; 
-        margin-top: 10px;
+        font-size: 14px; 
+        margin: 12px 0 8px 0;
+        border-top: 1px solid $line;
+        padding-top: 14px;
         .wc-text {
-            color: rgba(0,0,0,0);
+            color: $muted;
             @include transition;
             .word-count-number {
-                color: $dark;
+                color: $ink;
+                font-weight: 750;
             }
         }
     }
 
 
-    opacity: 0.3;
+    opacity: 0.96;
     @include transition;
     
     &:hover {
        opacity: 1;
        .wordcount .wc-text {
-           color: $dark;
+           color: $ink;
        }
        .sbutton .label {
-           opacity: 0.5;
+           opacity: 1;
        }
     }
 
@@ -136,3 +153,38 @@
   100% { color: $dark;       }
 }
 
+@media (max-width: 1080px) {
+    .text-panel {
+        left: auto;
+        right: 24px;
+        width: 160px;
+    }
+}
+
+@media (max-width: 760px) {
+    .text-panel {
+        top: 68px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+        padding: 8px;
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+
+        .sbutton {
+            width: auto;
+            flex: 0 0 auto;
+            margin: 0;
+            .label {
+                display: none;
+            }
+        }
+        .wordcount {
+            border-top: 0;
+            margin: 0 0 0 auto;
+            padding: 9px 4px 0 8px;
+            white-space: nowrap;
+        }
+    }
+}

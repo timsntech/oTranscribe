@@ -1,33 +1,40 @@
 @use "sass:color";
 @use "variables" as *;
 .topbar {
-    background: $dark;
-    color: white;
-    box-shadow: 0px 0px 10px #666;
-    -webkit-box-shadow: 0px 0px 10px #666;
+    background: rgba(255, 255, 255, 0.96);
+    color: $ink;
+    box-shadow: 0 1px 0 rgba(23, 32, 42, 0.08), 0 12px 35px rgba(23, 32, 42, 0.08);
+    -webkit-box-shadow: 0 1px 0 rgba(23, 32, 42, 0.08), 0 12px 35px rgba(23, 32, 42, 0.08);
     z-index: 50;
-    position: relative;
-    font-size: 16px;
+    position: sticky;
+    top: 0;
+    font-size: 14px;
     display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 0 18px;
+    box-sizing: border-box;
 
     &.inputting .controls {
         display: none;
     }
     
     &.inputting .help-title {
-        border-right: 1px solid color.adjust($dark, $lightness: 10%);        
+        border-right: 0;        
     }
 }
 
 @mixin title-button {
-    padding: 10px;
-    text-align: left;
+    padding: 9px 12px;
+    text-align: center;
     display: inline-block;
     vertical-align: top;
     width: auto;
-
-    background: $dark;
-    color: white;
+    min-height: 18px;
+    border-radius: 8px;
+    background: transparent;
+    color: $ink;
+    line-height: 18px;
 
     i {
         font-size: 0.90em;
@@ -35,18 +42,18 @@
 
 
     &:hover {
-        background-color: color.adjust($dark, $lightness: 10%);
+        background-color: $surface;
         cursor: pointer;
     };
     &.active {
-        color: $dark;
-        background: rgb(241, 241, 241);
+        color: $accent;
+        background: $accentSoft;
         &:hover {
-            background: #DDD;
+            background: color.adjust($accentSoft, $lightness: -4%);
         }
     }
     &:active {
-        background-color: color.adjust($dark, $lightness: -10%);
+        background-color: color.adjust($surface, $lightness: -4%);
     };
     
     
@@ -54,26 +61,87 @@
 
 .title {
     @include title-button;
-    border-right: 1px solid color.adjust($dark, $lightness: 10%);
+    border-right: 0;
+    font-size: 18px;
+    font-weight: 800;
+    margin-right: 8px;
     
 }
 
 .help-title {
     @include title-button;
-    border-right: 1px solid color.adjust($dark, $lightness: 10%);
+    border-right: 0;
     text-decoration: none;
+    margin-left: auto;
 }
 
 .language-title {
-    @include title-button;    
+    @include title-button;
+    color: $muted;    
     i {
         font-size: 0.90em;
     }
 }
 
 .settings-button {
-    @include title-button;    
-    border-left: 1px solid color.adjust($dark, $lightness: 10%);
-    border-right: 1px solid color.adjust($dark, $lightness: 10%);
-    align-self: flex-end;
+    @include title-button;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 0;
+    border-right: 0;
+    align-self: center;
+    margin-left: 4px;
+    width: 36px;
+    height: 36px;
+    min-height: 0;
+    padding: 0;
+    box-sizing: border-box;
+    i {
+        font-size: 15px;
+        line-height: 1;
+    }
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    color: $muted;
+    border-radius: 8px;
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    padding: 0;
+    margin-left: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
+    i {
+        font-size: 15px;
+        line-height: 1;
+    }
+    &:hover {
+        color: $accent;
+        background: $surface;
+    }
+}
+
+@media (max-width: 760px) {
+    .topbar {
+        padding: 0 10px;
+        gap: 4px;
+    }
+    .title {
+        font-size: 16px;
+        margin-right: 0;
+    }
+    .help-title,
+    .language-title,
+    .theme-toggle,
+    .settings-button {
+        font-size: 12px;
+        padding: 0;
+    }
 }

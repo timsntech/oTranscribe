@@ -16,8 +16,10 @@ import { initBackup } from './backup';
 import { exportSetup } from './export';
 import importSetup from './import';
 import viewController from './view-controller';
+import themeSetup from './theme';
 
 export default function init(){
+    themeSetup();
     initBackup();
     watchFormatting();
     languageSetup();
@@ -135,5 +137,4 @@ $(window).resize(function() {
         document.getElementById('media').style.width = oT.media.videoWidth();
     }
 });
-
 

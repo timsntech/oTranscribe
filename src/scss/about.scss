@@ -3,37 +3,70 @@
 .about {
         
     @include page;    
+
+    .container {
+        width: min(1100px, calc(100% - 48px));
+        min-height: calc(100vh - 56px);
+        display: grid;
+        grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1.05fr);
+        grid-template-areas:
+            "intro features"
+            "press press";
+        gap: 28px 44px;
+        align-content: center;
+        margin: 0 auto;
+        padding: 38px 0 28px 0;
+        box-sizing: border-box;
+    }
     
+    .about-intro {
+        grid-area: intro;
+        align-self: center;
+    }
+
     h1 {
-        font-size: 50px;
-        text-align: center;
-        margin-bottom: 20px;
-        
-        color: $accent;
+        font-size: 58px;
+        line-height: 0.95;
+        text-align: left;
+        margin: 0 0 18px 0;
+        color: $ink;
+        letter-spacing: 0;
     }
     
     p.lead {
         font-size: 20px;
-        text-align: center;
-        margin: 0 auto;
+        text-align: left;
+        margin: 0;
         display: block;
-        line-height: 32px;
+        line-height: 30px;
+        color: $muted;
+        max-width: 520px;
     }
                 
-    ul {
-        text-align: center;
-        margin: 2em 0 0 0;
+    .promo-list {
+        grid-area: features;
+        text-align: left;
+        margin: 0;
+        align-self: center;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
     }
     
     li {
-        width: 18%;
-        display: inline-block;
+        width: auto;
+        display: block;
         vertical-align: top;
-        font-size: 16px;
-        line-height: 20px;
-        text-align: center;
-        padding: 0 3%;     
-        padding-bottom: 25px;
+        font-size: 15px;
+        line-height: 21px;
+        text-align: left;
+        padding: 16px;
+        min-height: 86px;
+        box-sizing: border-box;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(217, 224, 231, 0.9);
+        border-radius: 8px;
+        box-shadow: $softShadow;
         
         strong {
             font-weight: bold;
@@ -50,25 +83,32 @@
     }
     
     .press {
-        color: $accent;
+        grid-area: press;
+        color: $muted;
         font-weight: bold;
-        text-align:center;
+        text-align:left;
         padding: 0;
+        align-self: end;
         p {
-            font-size: 20px;
-            padding-bottom: 10px;
+            font-size: 12px;
+            padding-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
         a {
             display: inline-block;
-            width: 33%;
+            width: 16.2%;
             vertical-align: middle;
-            opacity: 0.6;
+            opacity: 0.48;
             &:hover {
-                opacity: 1;
+                opacity: 0.85;
             };
         }
         img {
-            width: 80%;
+            width: 82%;
+            max-height: 44px;
+            object-fit: contain;
+            filter: grayscale(1);
         }
     }
     
@@ -98,23 +138,25 @@
     
     .start {
         display: block;
-        padding: 0.7em 1em;
-        border-radius: 5px;
+        padding: 15px 18px;
+        border-radius: 8px;
         color: white;
-        margin: 0 auto;
-        margin-top: 20px;
-        width: 14em;
+        margin: 28px 0 0 0;
+        width: 230px;
+        max-width: 100%;
         text-align: center;
         background: grey;
         cursor: default;
-        font-size: 21px;
+        font-size: 17px;
+        font-weight: 750;
+        box-shadow: $softShadow;
         .start-loading { display: inline; }
         .start-ready { display: none; }             
         &.ready {
             cursor: pointer;
             background: $accent;
             &:hover {
-                background: color.adjust($accent, $lightness: -10%);
+                background: color.adjust($accent, $lightness: -6%);
             }
             .start-loading { display: none; }
             .start-ready { display: inline; }             
@@ -140,27 +182,34 @@
 
 @media (max-width: 850px) {
     .about {    
-        padding: 40px 10%;
+        padding: 0;
+
+        .container {
+            width: min(100% - 28px, 620px);
+            min-height: auto;
+            display: block;
+            padding: 30px 0;
+        }
 
         h1 {
-            font-size: 35px;
+            font-size: 42px;
+            text-align: left;
         
         }
         p.lead {
             font-size: 18px;
-            font-weight: bold;
-            line-height: 24px; 
+            font-weight: 500;
+            line-height: 26px;
+            margin: 0;
         }
-        .container {
-            width: 100%;
-        }
-        ul {
-            margin: 2em 0; 
+        .promo-list {
+            margin: 26px 0; 
+            display: block;
         }
         li {
             width: auto;
-            padding: 3px 0; 
-            padding-bottom: 5px;
+            padding: 14px; 
+            margin-bottom: 10px;
             text-align: left;
             display: block;
             height: auto;        
@@ -180,7 +229,8 @@
             }
         }
         .start {
-            width: 80%;
+            width: 100%;
+            margin: 22px 0 0 0;
         }
         .credits{
             a {
@@ -201,4 +251,3 @@
         display: block;
     }
 }
-

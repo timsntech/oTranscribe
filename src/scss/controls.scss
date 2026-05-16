@@ -5,26 +5,34 @@
     display: flex;
     -webkit-flex: 1;
     flex: 1;
+    align-items: center;
+    gap: 6px;
     
     .button {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         vertical-align: top;
-        height: 36px;
-        min-width: 36px;
+        height: 38px;
+        min-width: 38px;
         text-align: center;
-        border-right: 1px solid color.adjust($dark, $lightness: 10%);
-        background: $dark;
-        color: white;
+        border-right: 0;
+        border: 1px solid $line;
+        border-radius: 8px;
+        background: $panel;
+        color: $ink;
     
-        padding: 10px 0;
-        height: 16px;
+        padding: 0 10px;
+        box-sizing: border-box;
         
         &:hover {
-            background-color: color.adjust($dark, $lightness: 10%);
+            background-color: $surface;
+            color: $accent;
+            border-color: $accent;
             cursor: pointer;
         };
         &:active {
-            background-color: color.adjust($dark, $lightness: -10%);
+            background-color: $accentSoft;
         };
         
     }
@@ -48,14 +56,14 @@
 }
 
 .button.refresh {
-    border-left: 1px solid color.adjust($dark, $lightness: 10%);
+    border-left: 1px solid $line;
 }
 
 
 .button .topbar-button-shortcut {
     opacity: 0;
-    padding-top: 2em;
-    color: #000;
+    padding-top: 32px;
+    color: $muted;
     font-size: 9px;
     cusor: default;
     display: block;
@@ -75,27 +83,31 @@
 
 .video-player {
     position: absolute;
-    top: 55px;
+    top: 72px;
     left: 20px;
     width: calc((100% - 800px)/2);
     min-width: 200px;
-    box-shadow: 0px 0px 5px black;
+    box-shadow: $shadow;
     background: $dark;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .progressor {
     display: inline-block;
     width: 100%;
-    height: 14px;
-    margin: 10px;
-    color: lightgrey;
-    background: color.adjust($dark, $lightness: 15%);
+    height: 16px;
+    margin: 0 8px;
+    color: $muted;
+    background: $surface;
     text-align: center;
     cursor: default;
     font-size: 13px;
     padding-top: 2px;
     vertical-align: middle;
     overflow: hidden;
+    border-radius: 999px;
+    border: 1px solid $line;
 }
 
 #player-hook {
@@ -110,27 +122,26 @@
 }
 
 .progressor-progress {
-    background: white;
-    background: grey;
+    background: $accentSoft;
     z-index: 100 !important;
 }
 
 .media-title {
     display: inline-block;
     padding: 11px 0;
-    color: lightgrey;
+    color: $muted;
     text-align: center;
     font-size: 14px;
-    border-right: 1px solid color.adjust($dark, $lightness: 10%);
+    border-right: 0;
 }
 
 .player-time {
     @include noselect(text);
     display: inline-block;
     font-size: 13px;
-    border-left: 1px solid color.adjust($dark, $lightness: 10%);
-    border-right: 1px solid color.adjust($dark, $lightness: 10%);
-    padding: 11px 10px 9px 10px !important;
+    border-left: 0;
+    border-right: 0;
+    padding: 10px 12px !important;
 }
 
 .time-selection {
@@ -138,13 +149,14 @@
     top: 20px;
     z-index: 50;
     top: 200px;
-    background: $dark;
-    padding: 7px;
-    color: white;
-    top: 25px;
-    box-shadow: 0px 0px 5px black;
+    background: $panel;
+    padding: 12px;
+    color: $ink;
+    top: 62px;
+    box-shadow: $shadow;
     right: 160px;
-    border: 1px solid #404040;
+    border: 1px solid $line;
+    border-radius: 8px;
     
     display: none;
     
@@ -155,6 +167,9 @@
         width: 60px;
         font-size: 16px;
         text-align: center;
+        border: 1px solid $line;
+        border-radius: 6px;
+        padding: 5px;
     }
     span {
         padding: 0 7px;
